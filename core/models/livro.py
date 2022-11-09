@@ -3,6 +3,7 @@ from .categoria import Categoria
 from .editora import Editora
 from .autor import Autor
 from core.models import Autor, Categoria, Editora
+from uploader.models import Image
 
 
 class Livro(models.Model):
@@ -19,6 +20,15 @@ class Livro(models.Model):
     )
 
     autores = models.ManyToManyField(Autor, related_name="livros")
+    
+    capa = models.ForeignKey(
+        Image,
+        related_name="+",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        default=None,
+    )
 
     def __str__(self):
         return f'{self.titulo} ({self.quantidade})'
