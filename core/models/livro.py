@@ -1,9 +1,11 @@
 from django.db import models
-from .categoria import Categoria
-from .editora import Editora
-from .autor import Autor
+
 from core.models import Autor, Categoria, Editora
 from uploader.models import Image
+
+from .autor import Autor
+from .categoria import Categoria
+from .editora import Editora
 
 
 class Livro(models.Model):
